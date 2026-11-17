@@ -6,20 +6,26 @@ export class LoginPage {
 	readonly usernameField: Locator;
 	readonly passwordField: Locator;
 	readonly loginButton: Locator;
+	readonly errorMessage: Locator;
 
-    constructor(page: Page) {
+	constructor(page: Page) {
 		this.page = page;
 		this.usernameField = page.locator('#username');
-		//this.usernameField = page.getByRole('textbox', { name: 'Username' });
 		this.passwordField = page.locator('#password');
+		this.loginButton = page.getByRole("button", { name: "Sign in" });
+		this.errorMessage = page.getByText("Invalid username or password");
+
+		//this.usernameField = page.getByRole('textbox', { name: 'Username' });
 		//this.passwordField = page.getByRole('textbox', { name: 'Password' });
-		this.loginButton = page.getByRole("button", { name: "Sign in"});
 		//this.loginButton = page.locator('xpath=//input[@name="login"]');//xpath example
 		//this.loginButton = page.locator('//input[@name="login"]');//xpath example 2
 		//this.loginButton = page.locator('#login');
+
+
 	}
 
-  	async login(username: string, password: string) {
+	async login(username: string, password: string) {
+
 		await this.usernameField.click();
 		await this.usernameField.fill(username);
 		await this.passwordField.click();
