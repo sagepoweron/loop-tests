@@ -14,6 +14,9 @@ export class ProjectsPage {
 	readonly mobileDoneColumn: Locator;
 
 
+	readonly toDoColumn: Locator;
+
+
 	constructor(page: Page) {
 		this.page = page;
 		this.logoutButton = page.getByRole('button', { name: 'Logout' });
@@ -25,6 +28,8 @@ export class ProjectsPage {
 		this.mobileToDoColumn = page.getByText('To Do (1)Push notification');
 		this.mobileInProgressColumn = page.getByText('In Progress (1)Offline');
 		this.mobileDoneColumn = page.getByText('Done (1)App icon designCreate');
+
+		this.toDoColumn = page.getByText("To Do").locator("..");
 	}
 
 	async logout() {
